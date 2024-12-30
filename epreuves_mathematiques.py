@@ -4,6 +4,7 @@ def epreuve_math():
     epreuves = [epreuve_math_factorielle, resoudre_equation_lineaire, epreuve_math_premier]
     epreuve_choisie = random.choice(epreuves)
     epreuve_choisie()
+#print(epreuve_math())
 
 def factorielle(n):
     fact = 1
@@ -19,7 +20,7 @@ def epreuve_math_factorielle():
         print("Correct! Vous gagnez une clé.")
         return True
     else:
-        print("Gros looser la valeur était",factorielle(n))
+        print("Gros looser, la valeur était",factorielle(n))
         return False
 #print(epreuve_math_factorielle())
 
@@ -36,7 +37,7 @@ def resoudre_equation_lineaire():
     else:
         print("Gros looser la valeur était",x)
         return False
-#print(resoudre_equation_lineaire())
+print(resoudre_equation_lineaire())
 
 def est_premier(n) :
   for i in range(2,n) :

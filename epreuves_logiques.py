@@ -1,3 +1,4 @@
+import random
 def suiv(joueur):
     if joueur == 0:
         joueur = 1
@@ -20,6 +21,7 @@ def affiche_grille(grille, message):
     print("--------------")
 
 def demande_position():
+    print("Placez votre bateau\n")
     ligne = int(input("Entrez la ligne (ex: 1 3) :"))
     colonne = int(input("Entrez la colonne (ex: 1 3) :"))
     while ligne < 1 or ligne > 3:
@@ -36,3 +38,35 @@ def init():
         grille[a[0]][a[1]] = "B"
     return affiche_grille(grille,"Voici où sont placés vos bateaux :")
 #print(init())
+
+def verifier_tir(grille_tirs, ligne, colonne):
+    """Vérifie si la position a déjà été jouée"""
+    if grille_tirs[ligne][colonne] != " ":
+        return False
+    return True
+
+def tour(joueur, grille_tirs_joueur, grille_adversaire):
+    print("C'est au tour de joueur",joueur,":")
+    if joueur == 1:
+        affiche_grille(grille_tirs_joueur, "Rappel de l'historique des tirs que vous avez effectués : ")
+        print("Saisissez une position pour le tir :") 
+        a = demande_position()
+        if grille_adversaire[a[0]][a[1]] == "B":
+            print("Touché !")
+            grille_tirs_joueur[a[0]][a[1]],grille_adversaire[a[0]][a[1]] = "X","X"
+        else:
+            print("Manqué !")
+            grille_tirs_joueur[a[0]][a[1]],grille_adversaire[a[0]][a[1]] = ".","."
+    else:
+        ligne = random.randint(0,2)
+        colonne = random.randint(0,2)
+        while verifier_tir(grille_adversaire, ligne, colonne) == False:
+            ligne = random.randint(0,2)
+            colonne = random.randint(0,2)
+        if grille_adversaire[ligne][colonne] == "B":
+            grille_tirs_joueur[ligne][colonne],grille_adversaire[ligne][colonne] = "X","X"
+        else:
+            grille_tirs_joueur[ligne][colonne],grille_adversaire[ligne][colonne] = ".","."
+print(tour(1,init(),init()))
+
+

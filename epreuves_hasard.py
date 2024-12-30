@@ -1,10 +1,5 @@
 import random
 
-def epreuve_hasard():
-    epreuves = [bonneteau(),jeu_lance_des()]
-    epreuve_choisie = random.choice(epreuves)
-    epreuve_choisie()
-
 def bonneteau():
     bonneteaux = ['A', 'B', 'C']
     cle_sous_bonneteau = random.choice(bonneteaux)
@@ -23,9 +18,10 @@ def bonneteau():
 
     print("Vous avez perdu! La clé se trouvait sous le bonneteau", cle_sous_bonneteau, ".")
     return False
-print(bonneteau())
+#print(bonneteau())
 
 def jeu_lance_des():
+    print("Bienvenue au jeu des dés! \n Le premier à faire un 6 gagne. \n")
     for i in range(3,0,-1):
         print("il reste ",i,"essais")
         input("Appuyez sur la touche 'Entrée' pour lancer les dés. \n")
@@ -44,3 +40,9 @@ def jeu_lance_des():
     print("C'est un match nul!!")
     return False
 #print(jeu_lance_des())
+
+def epreuve_hasard():
+    epreuves = [bonneteau,jeu_lance_des]
+    epreuve_choisie = random.choice(epreuves)
+    epreuve_choisie()
+print(epreuve_hasard())
