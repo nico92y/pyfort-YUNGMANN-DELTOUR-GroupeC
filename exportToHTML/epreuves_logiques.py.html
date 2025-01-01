@@ -1,0 +1,95 @@
+<html>
+<head>
+<title>epreuves_logiques.py</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.s0 { color: #cf8e6d;}
+.s1 { color: #bcbec4;}
+.s2 { color: #bcbec4;}
+.s3 { color: #2aacb8;}
+.s4 { color: #6aab73;}
+.s5 { color: #7a7e85;}
+.s6 { color: #5f826b; font-style: italic;}
+</style>
+</head>
+<body bgcolor="#1e1f22">
+<table CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#606060" >
+<tr><td><center>
+<font face="Arial, Helvetica" color="#000000">
+epreuves_logiques.py</font>
+</center></td></tr></table>
+<pre><span class="s0">import </span><span class="s1">random</span>
+<span class="s0">def </span><span class="s1">suiv</span><span class="s2">(</span><span class="s1">joueur</span><span class="s2">):</span>
+    <span class="s0">if </span><span class="s1">joueur </span><span class="s2">== </span><span class="s3">0</span><span class="s2">:</span>
+        <span class="s1">joueur </span><span class="s2">= </span><span class="s3">1</span>
+    <span class="s0">else</span><span class="s2">:</span>
+        <span class="s1">joueur </span><span class="s2">= </span><span class="s3">0</span>
+    <span class="s0">return </span><span class="s1">joueur</span>
+
+<span class="s0">def </span><span class="s1">grille_vide</span><span class="s2">():</span>
+    <span class="s0">return </span><span class="s2">[[</span><span class="s4">&quot; &quot;</span><span class="s2">,</span><span class="s4">&quot; &quot;</span><span class="s2">,</span><span class="s4">&quot; &quot;</span><span class="s2">],</span>
+            <span class="s2">[</span><span class="s4">&quot; &quot;</span><span class="s2">,</span><span class="s4">&quot; &quot;</span><span class="s2">,</span><span class="s4">&quot; &quot;</span><span class="s2">],</span>
+            <span class="s2">[</span><span class="s4">&quot; &quot;</span><span class="s2">,</span><span class="s4">&quot; &quot;</span><span class="s2">,</span><span class="s4">&quot; &quot;</span><span class="s2">]]</span>
+
+<span class="s0">def </span><span class="s1">affiche_grille</span><span class="s2">(</span><span class="s1">grille</span><span class="s2">, </span><span class="s1">message</span><span class="s2">):</span>
+    <span class="s1">print</span><span class="s2">(</span><span class="s1">message</span><span class="s2">)</span>
+    <span class="s0">for </span><span class="s1">ligne </span><span class="s0">in </span><span class="s1">grille</span><span class="s2">:</span>
+        <span class="s1">ligne_texte </span><span class="s2">= </span><span class="s4">&quot;| &quot;</span>
+        <span class="s0">for </span><span class="s1">case </span><span class="s0">in </span><span class="s1">ligne</span><span class="s2">:</span>
+            <span class="s1">ligne_texte </span><span class="s2">+= </span><span class="s4">f&quot;</span><span class="s0">{</span><span class="s1">case</span><span class="s0">} </span><span class="s4">| &quot;</span>
+        <span class="s1">print</span><span class="s2">(</span><span class="s1">ligne_texte</span><span class="s2">)</span>
+    <span class="s1">print</span><span class="s2">(</span><span class="s4">&quot;--------------&quot;</span><span class="s2">)</span>
+
+<span class="s0">def </span><span class="s1">demande_position</span><span class="s2">():</span>
+    <span class="s1">print</span><span class="s2">(</span><span class="s4">&quot;Placez votre bateau</span><span class="s0">\n</span><span class="s4">&quot;</span><span class="s2">)</span>
+    <span class="s1">ligne </span><span class="s2">= </span><span class="s1">int</span><span class="s2">(</span><span class="s1">input</span><span class="s2">(</span><span class="s4">&quot;Entrez la ligne (ex: 1 3) :&quot;</span><span class="s2">))</span>
+    <span class="s1">colonne </span><span class="s2">= </span><span class="s1">int</span><span class="s2">(</span><span class="s1">input</span><span class="s2">(</span><span class="s4">&quot;Entrez la colonne (ex: 1 3) :&quot;</span><span class="s2">))</span>
+    <span class="s0">while </span><span class="s1">ligne </span><span class="s2">&lt; </span><span class="s3">1 </span><span class="s0">or </span><span class="s1">ligne </span><span class="s2">&gt; </span><span class="s3">3</span><span class="s2">:</span>
+        <span class="s1">ligne </span><span class="s2">= </span><span class="s1">int</span><span class="s2">(</span><span class="s1">input</span><span class="s2">(</span><span class="s4">&quot;Entrez une position pour la ligne valide (ex: 1 3) :&quot;</span><span class="s2">))</span>
+    <span class="s0">while </span><span class="s1">colonne </span><span class="s2">&lt; </span><span class="s3">1 </span><span class="s0">or </span><span class="s1">colonne </span><span class="s2">&gt; </span><span class="s3">3</span><span class="s2">:</span>
+        <span class="s1">colonne </span><span class="s2">= </span><span class="s1">int</span><span class="s2">(</span><span class="s1">input</span><span class="s2">(</span><span class="s4">&quot;Entrez une position pour la colonne valide (ex: 1 3) :&quot;</span><span class="s2">))</span>
+    <span class="s1">resultat </span><span class="s2">= (</span><span class="s1">ligne</span><span class="s2">-</span><span class="s3">1</span><span class="s2">,</span><span class="s1">colonne</span><span class="s2">-</span><span class="s3">1</span><span class="s2">)</span>
+    <span class="s0">return </span><span class="s1">resultat</span>
+
+<span class="s0">def </span><span class="s1">init</span><span class="s2">():</span>
+    <span class="s1">grille </span><span class="s2">= </span><span class="s1">grille_vide</span><span class="s2">()</span>
+    <span class="s0">for </span><span class="s1">i </span><span class="s0">in </span><span class="s1">range</span><span class="s2">(</span><span class="s3">2</span><span class="s2">):</span>
+        <span class="s1">a </span><span class="s2">= </span><span class="s1">demande_position</span><span class="s2">()</span>
+        <span class="s1">grille</span><span class="s2">[</span><span class="s1">a</span><span class="s2">[</span><span class="s3">0</span><span class="s2">]][</span><span class="s1">a</span><span class="s2">[</span><span class="s3">1</span><span class="s2">]] = </span><span class="s4">&quot;B&quot;</span>
+    <span class="s0">return </span><span class="s1">affiche_grille</span><span class="s2">(</span><span class="s1">grille</span><span class="s2">,</span><span class="s4">&quot;Voici où sont placés vos bateaux :&quot;</span><span class="s2">)</span>
+<span class="s5">#print(init())</span>
+
+<span class="s0">def </span><span class="s1">verifier_tir</span><span class="s2">(</span><span class="s1">grille_tirs</span><span class="s2">, </span><span class="s1">ligne</span><span class="s2">, </span><span class="s1">colonne</span><span class="s2">):</span>
+    <span class="s6">&quot;&quot;&quot;Vérifie si la position a déjà été jouée&quot;&quot;&quot;</span>
+    <span class="s0">if </span><span class="s1">grille_tirs</span><span class="s2">[</span><span class="s1">ligne</span><span class="s2">][</span><span class="s1">colonne</span><span class="s2">] != </span><span class="s4">&quot; &quot;</span><span class="s2">:</span>
+        <span class="s0">return False</span>
+    <span class="s0">return True</span>
+
+<span class="s0">def </span><span class="s1">tour</span><span class="s2">(</span><span class="s1">joueur</span><span class="s2">, </span><span class="s1">grille_tirs_joueur</span><span class="s2">, </span><span class="s1">grille_adversaire</span><span class="s2">):</span>
+    <span class="s1">print</span><span class="s2">(</span><span class="s4">&quot;C'est au tour de joueur&quot;</span><span class="s2">,</span><span class="s1">joueur</span><span class="s2">,</span><span class="s4">&quot;:&quot;</span><span class="s2">)</span>
+    <span class="s0">if </span><span class="s1">joueur </span><span class="s2">== </span><span class="s3">1</span><span class="s2">:</span>
+        <span class="s1">affiche_grille</span><span class="s2">(</span><span class="s1">grille_tirs_joueur</span><span class="s2">, </span><span class="s4">&quot;Rappel de l'historique des tirs que vous avez effectués : &quot;</span><span class="s2">)</span>
+        <span class="s1">print</span><span class="s2">(</span><span class="s4">&quot;Saisissez une position pour le tir :&quot;</span><span class="s2">) </span>
+        <span class="s1">a </span><span class="s2">= </span><span class="s1">demande_position</span><span class="s2">()</span>
+        <span class="s0">if </span><span class="s1">grille_adversaire</span><span class="s2">[</span><span class="s1">a</span><span class="s2">[</span><span class="s3">0</span><span class="s2">]][</span><span class="s1">a</span><span class="s2">[</span><span class="s3">1</span><span class="s2">]] == </span><span class="s4">&quot;B&quot;</span><span class="s2">:</span>
+            <span class="s1">print</span><span class="s2">(</span><span class="s4">&quot;Touché !&quot;</span><span class="s2">)</span>
+            <span class="s1">grille_tirs_joueur</span><span class="s2">[</span><span class="s1">a</span><span class="s2">[</span><span class="s3">0</span><span class="s2">]][</span><span class="s1">a</span><span class="s2">[</span><span class="s3">1</span><span class="s2">]],</span><span class="s1">grille_adversaire</span><span class="s2">[</span><span class="s1">a</span><span class="s2">[</span><span class="s3">0</span><span class="s2">]][</span><span class="s1">a</span><span class="s2">[</span><span class="s3">1</span><span class="s2">]] = </span><span class="s4">&quot;X&quot;</span><span class="s2">,</span><span class="s4">&quot;X&quot;</span>
+        <span class="s0">else</span><span class="s2">:</span>
+            <span class="s1">print</span><span class="s2">(</span><span class="s4">&quot;Manqué !&quot;</span><span class="s2">)</span>
+            <span class="s1">grille_tirs_joueur</span><span class="s2">[</span><span class="s1">a</span><span class="s2">[</span><span class="s3">0</span><span class="s2">]][</span><span class="s1">a</span><span class="s2">[</span><span class="s3">1</span><span class="s2">]],</span><span class="s1">grille_adversaire</span><span class="s2">[</span><span class="s1">a</span><span class="s2">[</span><span class="s3">0</span><span class="s2">]][</span><span class="s1">a</span><span class="s2">[</span><span class="s3">1</span><span class="s2">]] = </span><span class="s4">&quot;.&quot;</span><span class="s2">,</span><span class="s4">&quot;.&quot;</span>
+    <span class="s0">else</span><span class="s2">:</span>
+        <span class="s1">ligne </span><span class="s2">= </span><span class="s1">random</span><span class="s2">.</span><span class="s1">randint</span><span class="s2">(</span><span class="s3">0</span><span class="s2">,</span><span class="s3">2</span><span class="s2">)</span>
+        <span class="s1">colonne </span><span class="s2">= </span><span class="s1">random</span><span class="s2">.</span><span class="s1">randint</span><span class="s2">(</span><span class="s3">0</span><span class="s2">,</span><span class="s3">2</span><span class="s2">)</span>
+        <span class="s0">while </span><span class="s1">verifier_tir</span><span class="s2">(</span><span class="s1">grille_adversaire</span><span class="s2">, </span><span class="s1">ligne</span><span class="s2">, </span><span class="s1">colonne</span><span class="s2">) == </span><span class="s0">False</span><span class="s2">:</span>
+            <span class="s1">ligne </span><span class="s2">= </span><span class="s1">random</span><span class="s2">.</span><span class="s1">randint</span><span class="s2">(</span><span class="s3">0</span><span class="s2">,</span><span class="s3">2</span><span class="s2">)</span>
+            <span class="s1">colonne </span><span class="s2">= </span><span class="s1">random</span><span class="s2">.</span><span class="s1">randint</span><span class="s2">(</span><span class="s3">0</span><span class="s2">,</span><span class="s3">2</span><span class="s2">)</span>
+        <span class="s0">if </span><span class="s1">grille_adversaire</span><span class="s2">[</span><span class="s1">ligne</span><span class="s2">][</span><span class="s1">colonne</span><span class="s2">] == </span><span class="s4">&quot;B&quot;</span><span class="s2">:</span>
+            <span class="s1">grille_tirs_joueur</span><span class="s2">[</span><span class="s1">ligne</span><span class="s2">][</span><span class="s1">colonne</span><span class="s2">],</span><span class="s1">grille_adversaire</span><span class="s2">[</span><span class="s1">ligne</span><span class="s2">][</span><span class="s1">colonne</span><span class="s2">] = </span><span class="s4">&quot;X&quot;</span><span class="s2">,</span><span class="s4">&quot;X&quot;</span>
+        <span class="s0">else</span><span class="s2">:</span>
+            <span class="s1">grille_tirs_joueur</span><span class="s2">[</span><span class="s1">ligne</span><span class="s2">][</span><span class="s1">colonne</span><span class="s2">],</span><span class="s1">grille_adversaire</span><span class="s2">[</span><span class="s1">ligne</span><span class="s2">][</span><span class="s1">colonne</span><span class="s2">] = </span><span class="s4">&quot;.&quot;</span><span class="s2">,</span><span class="s4">&quot;.&quot;</span>
+<span class="s1">print</span><span class="s2">(</span><span class="s1">tour</span><span class="s2">(</span><span class="s3">1</span><span class="s2">,</span><span class="s1">init</span><span class="s2">(),</span><span class="s1">init</span><span class="s2">()))</span>
+
+
+</pre>
+</body>
+</html>
