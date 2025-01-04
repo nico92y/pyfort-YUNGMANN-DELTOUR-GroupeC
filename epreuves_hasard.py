@@ -25,7 +25,7 @@ def jeu_lance_des():
     for i in range(3,0,-1):
         print("il reste ",i,"essais")
         input("Appuyez sur la touche 'Entrée' pour lancer les dés. \n")
-        joueur1 = (random.randint(1,6),random.randint(1,6))
+        joueur1 = (random.randint(1,6),random.randint(1,6))(())
         print("vous avez obtenu ",joueur1,".")
         if joueur1[0]==6 or joueur1[1]==6:
             print("Bravo! Vous gagnez une clé.")
@@ -40,6 +40,8 @@ def jeu_lance_des():
     print("C'est un match nul!!")
     return False
 #print(jeu_lance_des())
+
+
 
 def epreuve_hasard():
     epreuves = [bonneteau,jeu_lance_des]
