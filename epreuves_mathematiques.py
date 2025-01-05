@@ -1,6 +1,6 @@
 import random
 
-def factorielle(n):
+'''def factorielle(n):
     a = 1
     for i in range(1,n+1):
         a = a * i
@@ -16,14 +16,13 @@ def epreuve_math_factorielle():
     else:
         print("Echec ! La valeur etait :", factorielle(n))
         return False
-#print(epreuve_math_factorielle())
-
+#print(epreuve_math_factorielle())''' # !!Ces codes servent seulement d'entrainement, il ne fait pas partis des 3 Epreuves!!
 
 
 def resoudre_equation_lineaire():
     a = random.randint(1, 10)
     b = random.randint(1, 10)
-    x = -b / a
+    x = -b / a      #Solution de l'équation
     return a, b, x
 
 def epreuve_math_equation():
@@ -65,8 +64,6 @@ def epreuve_math_premier():
 #print(epreuve_math_premier())
 
 
-
-
 def epreuve_roulette_mathematique():
     nombres = [random.randint(1,20 ) for _ in range(5)]
     operation = random.choice(["addition", "soustraction", "multiplication",])
@@ -88,14 +85,13 @@ def epreuve_roulette_mathematique():
         print("Bonne réponse! Vous avez gagné une clé.")
         return True
     else:
-        print("Echec !La valeur etait :",resultat)
+        print("Echec !\nLa valeur etait :",resultat)
         return False
 #print(epreuve_roulette_mathematique())
 
 
-
 def epreuve_math():
-    epreuves = [epreuve_math_factorielle, epreuve_math_equation, epreuve_math_premier, epreuve_roulette_mathematique]
+    epreuves = [epreuve_math_equation, epreuve_math_premier, epreuve_roulette_mathematique]
     epreuve = random.choice(epreuves)
     return epreuve()
 #print(epreuve_math())
